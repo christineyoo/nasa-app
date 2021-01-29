@@ -10,26 +10,13 @@ function formatQueryParams(params) {
   return queryItems.join("&");
 }
 
-function displayResults(responseJson) {
-  // if there are previous results, remove them
-  $("#results-list").empty();
-    for (let i = 0; i < responseJson.data.length; i++) {
-        $("#results-list").append(
-          `<li><h3>${responseJson.data[i].fullName}</h3>
-            <p>${responseJson.data[i].description}</p>
-            <p>Learn more: <a href="${responseJson.data[i].url}" target="_blank">${responseJson.data[i].url}</a></p>
-            </li><hr>`
-        );
-      }
-  //display the results section
-  $("#results").removeClass("hidden");
+function displayApod(responseJson) {
+  $(".apod").html(`<img src="${responseJson.hdurl}">`);
 }
 
-function getParks(query, maxResults) {
+function getPicture() {
   const params = {
     api_key: apiKey,
-    q: query,
-    limit: maxResults,
   };
   const queryString = formatQueryParams(params);
   const url = searchURL + "?" + queryString;
@@ -41,7 +28,7 @@ function getParks(query, maxResults) {
       }
       throw new Error(response.statusText);
     })
-    .then((responseJson) => displayResults(responseJson))
+    .then((responseJson) => displayApod(responseJson))
     .catch((err) => {
       $("#js-error-message").text(`Something went wrong: ${err.message}`);
     });
@@ -52,8 +39,10 @@ function watchForm() {
     event.preventDefault();
     const searchTerm = $("#js-search-term").val();
     const maxResults = $("#js-max-results").val();
-    getParks(searchTerm, maxResults);
+    getSearchResults();
   });
 }
+
+$(getPicture);
 
 $(watchForm);
