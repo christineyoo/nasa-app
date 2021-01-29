@@ -12,19 +12,20 @@ function formatQueryParams(params) {
 }
 
 function displayPicture(responseJson) {
-    return $(".apod").html(`<p>Today's date: ${responseJson.date}</p><img src="${responseJson.hdurl}"><p><strong>${responseJson.title}</strong></p><p>${responseJson.explanation}</p>`);
+  return $(".apod").html(
+    `<p>Today's date: ${responseJson.date}</p><img src="${responseJson.hdurl}"><p><strong>${responseJson.title}</strong></p><p>${responseJson.explanation}</p>`
+  );
 }
 
 function displaySearchResults(responseJson) {
-    $("#results").append(`<img src="${responseJson.href}">`);
+  $("#results").append(`<img src="${responseJson.href}">`);
 
-    $("#results").removeClass("hidden");
+  $("#results").removeClass("hidden");
 }
 
 function getPicture() {
   const params = {
-    api_key: apiKey,
-    concept_tags: true
+    api_key: apiKey
   };
   const queryString = formatQueryParams(params);
   const url = apodBaseUrl + "?" + queryString;
@@ -45,17 +46,21 @@ function getPicture() {
 }
 
 function getSearchResults(query) {
-    const params = {
-        api_key: apiKey,
-        q: query
-    };
+  const params = {
+    api_key: apiKey,
+    q: query,
+  };
 
-    const queryString = formatQueryParams(params);
-    const libraryUrl = libraryBaseUrl + "?" + queryString;
+  const queryString = formatQueryParams(params);
+  const libraryUrl = libraryBaseUrl + "?" + queryString;
 
-    console.log(libraryUrl);
+  console.log(libraryUrl);
 
-    fetch(libraryUrl)
+  const options = {
+    method: 'GET'
+  };
+
+  fetch(libraryUrl, options)
     .then((response) => {
       if (response.ok) {
         return response.json();
@@ -79,3 +84,5 @@ function watchForm() {
 $(getPicture);
 
 $(watchForm);
+
+// GET method failed. Try including a method object in the call. Also read the documentation (page 2);
