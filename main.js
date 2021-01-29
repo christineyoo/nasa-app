@@ -2,6 +2,7 @@
 
 const apiKey = "IptJpzC6QdzZTggB5pgKm6BLb4B8b8mjoHktBJgf";
 const apodBaseUrl = "https://api.nasa.gov/planetary/apod";
+const libraryBaseUrl = "https://images-api.nasa.gov/search";
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
@@ -37,12 +38,23 @@ function getPicture() {
     });
 }
 
+function getSearchResults(query) {
+    const params = {
+        api_key: apiKey,
+        q: query
+    };
+
+    const queryString = formatQueryParams(params);
+    const libraryUrl = libraryBaseUrl + "?" + queryString;
+
+    console.log(libraryUrl);
+}
+
 function watchForm() {
   $("form").submit((event) => {
     event.preventDefault();
     const searchTerm = $("#js-search-term").val();
-    const maxResults = $("#js-max-results").val();
-    getSearchResults();
+    getSearchResults(searchTerm);
   });
 }
 
