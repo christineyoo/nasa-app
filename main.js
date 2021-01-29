@@ -11,8 +11,14 @@ function formatQueryParams(params) {
   return queryItems.join("&");
 }
 
-function displayApod(responseJson) {
+function displayPicture(responseJson) {
     return $(".apod").html(`<p>Today's date: ${responseJson.date}</p><img src="${responseJson.hdurl}"><p><strong>${responseJson.title}</strong></p><p>${responseJson.explanation}</p>`);
+}
+
+function displaySearchResults(responseJson) {
+    $("#results").append(`<img src="${responseJson.href}">`);
+
+    $("#results").removeClass("hidden");
 }
 
 function getPicture() {
@@ -32,7 +38,7 @@ function getPicture() {
       }
       throw new Error(response.statusText);
     })
-    .then((responseJson) => displayApod(responseJson))
+    .then((responseJson) => displayPicture(responseJson))
     .catch((err) => {
       $("#js-error-message").text(`Something went wrong: ${err.message}`);
     });
@@ -48,6 +54,18 @@ function getSearchResults(query) {
     const libraryUrl = libraryBaseUrl + "?" + queryString;
 
     console.log(libraryUrl);
+
+    fetch(libraryUrl)
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error(response.statusText);
+    })
+    .then((responseJson) => displaySearchResults(responseJson))
+    .catch((err) => {
+      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+    });
 }
 
 function watchForm() {
