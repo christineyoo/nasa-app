@@ -11,15 +11,18 @@ function formatQueryParams(params) {
 }
 
 function displayApod(responseJson) {
-    return $(".apod").html(`<p>Today's date: ${responseJson.date}</p><img src="${responseJson.hdurl}"><p>${responseJson.explanation}</p>`);
+    return $(".apod").html(`<p>Today's date: ${responseJson.date}</p><img src="${responseJson.hdurl}"><p><strong>${responseJson.title}</strong></p><p>${responseJson.explanation}</p>`);
 }
 
 function getPicture() {
   const params = {
     api_key: apiKey,
+    concept_tags: true
   };
   const queryString = formatQueryParams(params);
   const url = apodBaseUrl + "?" + queryString;
+
+  console.log(url);
 
   fetch(url)
     .then((response) => {
