@@ -1,7 +1,7 @@
 "use strict";
 
 const apiKey = "IptJpzC6QdzZTggB5pgKm6BLb4B8b8mjoHktBJgf";
-const searchURL = "https://api.nasa.gov/planetary/apod";
+const apodBaseUrl = "https://api.nasa.gov/planetary/apod";
 
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
@@ -11,7 +11,7 @@ function formatQueryParams(params) {
 }
 
 function displayApod(responseJson) {
-  $(".apod").html(`<img src="${responseJson.hdurl}">`);
+    return $(".apod").html(`<p>Today's date: ${responseJson.date}</p><img src="${responseJson.hdurl}"><p>${responseJson.explanation}</p>`);
 }
 
 function getPicture() {
@@ -19,7 +19,7 @@ function getPicture() {
     api_key: apiKey,
   };
   const queryString = formatQueryParams(params);
-  const url = searchURL + "?" + queryString;
+  const url = apodBaseUrl + "?" + queryString;
 
   fetch(url)
     .then((response) => {
