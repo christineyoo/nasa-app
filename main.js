@@ -1,5 +1,3 @@
-"use strict";
-
 const apiKey = "IptJpzC6QdzZTggB5pgKm6BLb4B8b8mjoHktBJgf";
 const apodBaseUrl = "https://api.nasa.gov/planetary/apod";
 const libraryBaseUrl = "https://images-api.nasa.gov/search";
@@ -18,7 +16,7 @@ function displayPicture(responseJson) {
 }
 
 function displaySearchResults(responseJson) {
-  $("#results").append(`<img src="${responseJson.href}">`);
+  $("#results").append(`<p>${responseJson.collection.items[0].data[0].title}<p><img src="${responseJson.collection.items[0].links[0].href}"><p>${responseJson.collection.items[0].data[0].description_508}<p><p>Date created:${responseJson.collection.items[0].data[0].date_created}<p>`);
 
   $("#results").removeClass("hidden");
 }
@@ -47,7 +45,6 @@ function getPicture() {
 
 function getSearchResults(query) {
   const params = {
-    api_key: apiKey,
     q: query,
   };
 
@@ -77,6 +74,7 @@ function watchForm() {
   $("form").submit((event) => {
     event.preventDefault();
     const searchTerm = $("#js-search-term").val();
+    // const maxResults = $("$js-max-results").val();
     getSearchResults(searchTerm);
   });
 }
