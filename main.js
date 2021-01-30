@@ -14,7 +14,7 @@ function formatQueryParams(params) {
 // displayPicture and displaySearchResults are responsible for displaying the content
 function displayPicture(responseJson) {
   return $(".apod").html(
-    `<h2>Today is ${responseJson.date}</h2><img src="${responseJson.hdurl}"><h3>${responseJson.title}</h3><p>${responseJson.explanation}</p>`
+    `<h2>Today is ${responseJson.date}</h2><img src="${responseJson.hdurl}" alt="Astronomy picture of the day"><h3>${responseJson.title}</h3><p>${responseJson.explanation}</p>`
   );
 }
 
@@ -26,7 +26,7 @@ function displaySearchResults(responseJson, quantity) {
   for (let i = 0; i < quantity; i++) {
     $("#results-list")
       .append(`<li><h4>${responseJson.collection.items[i].data[0].title}</h4>
-    <img src="${responseJson.collection.items[i].links[0].href}">
+    <img src="${responseJson.collection.items[i].links[0].href}" alt="Image of searched term${i}">
     <p>${responseJson.collection.items[i].data[0].description}</p>
     <p>Date created: ${responseJson.collection.items[i].data[0].date_created}</p></li><hr>`);
   }
