@@ -15,15 +15,21 @@ function displayPicture(responseJson) {
   );
 }
 
-function displaySearchResults(responseJson) {
-  $("#results").append(`<p>${responseJson.collection.items[0].data[0].title}<p><img src="${responseJson.collection.items[0].links[0].href}"><p>${responseJson.collection.items[0].data[0].description_508}<p><p>Date created:${responseJson.collection.items[0].data[0].date_created}<p>`);
+function displaySearchResults(responseJson, quantity) {
+  for (let i = 0; i < quantity; i++) {
+    $("#results")
+      .append(`<p>${responseJson.collection.items[i].data[0].title}</p>
+    <img src="${responseJson.collection.items[i].links[0].href}">
+    <p>${responseJson.collection.items[i].data[0].description}</p>
+    <p>Date created:${responseJson.collection.items[i].data[0].date_created}</p>`);
+  }
 
   $("#results").removeClass("hidden");
 }
 
 function getPicture() {
   const params = {
-    api_key: apiKey
+    api_key: apiKey,
   };
   const queryString = formatQueryParams(params);
   const url = apodBaseUrl + "?" + queryString;
@@ -43,7 +49,7 @@ function getPicture() {
     });
 }
 
-function getSearchResults(query) {
+function getSearchResults(query, quantity) {
   const params = {
     q: query,
   };
@@ -54,7 +60,7 @@ function getSearchResults(query) {
   console.log(libraryUrl);
 
   const options = {
-    method: 'GET'
+    method: "GET",
   };
 
   fetch(libraryUrl, options)
@@ -64,7 +70,7 @@ function getSearchResults(query) {
       }
       throw new Error(response.statusText);
     })
-    .then((responseJson) => displaySearchResults(responseJson))
+    .then((responseJson) => displaySearchResults(responseJson, quantity))
     .catch((err) => {
       $("#js-error-message").text(`Something went wrong: ${err.message}`);
     });
@@ -74,8 +80,8 @@ function watchForm() {
   $("form").submit((event) => {
     event.preventDefault();
     const searchTerm = $("#js-search-term").val();
-    // const maxResults = $("$js-max-results").val();
-    getSearchResults(searchTerm);
+    const maxResults = $("#js-max-results").val();
+    getSearchResults(searchTerm, maxResults);
   });
 }
 
