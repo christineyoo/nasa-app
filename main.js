@@ -19,13 +19,15 @@ function displayPicture(responseJson) {
 }
 
 function displaySearchResults(responseJson, quantity) {
+  $("#results-list").empty();
+
   // for loop displays the number of results based on the user's quantity input
   for (let i = 0; i < quantity; i++) {
-    $("#results")
-      .append(`<h4>${responseJson.collection.items[i].data[0].title}</h4>
+    $("#results-list")
+      .append(`<li><h4>${responseJson.collection.items[i].data[0].title}</h4>
     <img src="${responseJson.collection.items[i].links[0].href}">
     <p>${responseJson.collection.items[i].data[0].description}</p>
-    <p>Date created: ${responseJson.collection.items[i].data[0].date_created}</p><hr>`);
+    <p>Date created: ${responseJson.collection.items[i].data[0].date_created}</p></li><hr>`);
   }
   // Removes the hidden class to show the results
   $("#results").removeClass("hidden");
