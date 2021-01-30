@@ -51,7 +51,9 @@ function getPicture() {
     })
     .then((responseJson) => displayPicture(responseJson))
     .catch((err) => {
-      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+      $("#js-error-message").text(
+        `Something went wrong. Try searching a new term.`
+      );
     });
 }
 

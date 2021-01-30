@@ -141,6 +141,7 @@ form {
 }
 .error-message {
   color: #dc2424;
+  font-weight: bold;
 }
 
 .hidden {
