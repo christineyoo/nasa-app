@@ -112,8 +112,7 @@ img {
 }
 
 nav {
-  position: fixed;
-  bottom: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 /* Styling for the footer */
