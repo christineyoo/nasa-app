@@ -20,6 +20,7 @@ function displayPicture(responseJson) {
 
 function displaySearchResults(responseJson, quantity) {
   $("#results-list").empty();
+  $("#js-error-message").empty();
 
   // for loop displays the number of results based on the user's quantity input
   for (let i = 0; i < quantity; i++) {
