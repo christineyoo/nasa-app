@@ -1,7 +1,9 @@
+// API key and base URLs
 const apiKey = "IptJpzC6QdzZTggB5pgKm6BLb4B8b8mjoHktBJgf";
 const apodBaseUrl = "https://api.nasa.gov/planetary/apod";
 const libraryBaseUrl = "https://images-api.nasa.gov/search";
 
+// This function formats the query parameters into a string
 function formatQueryParams(params) {
   const queryItems = Object.keys(params).map(
     (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
@@ -9,32 +11,33 @@ function formatQueryParams(params) {
   return queryItems.join("&");
 }
 
+// displayPicture and displaySearchResults are responsible for displaying the content
 function displayPicture(responseJson) {
   return $(".apod").html(
-    `<p>Today's date: ${responseJson.date}</p><img src="${responseJson.hdurl}"><p><strong>${responseJson.title}</strong></p><p>${responseJson.explanation}</p>`
+    `<h2>Today is ${responseJson.date}</h2><img src="${responseJson.hdurl}"><h3>${responseJson.title}</h3><p>${responseJson.explanation}</p>`
   );
 }
 
 function displaySearchResults(responseJson, quantity) {
+  // for loop displays the number of results based on the user's quantity input
   for (let i = 0; i < quantity; i++) {
     $("#results")
-      .append(`<p>${responseJson.collection.items[i].data[0].title}</p>
+      .append(`<h4>${responseJson.collection.items[i].data[0].title}</h4>
     <img src="${responseJson.collection.items[i].links[0].href}">
     <p>${responseJson.collection.items[i].data[0].description}</p>
-    <p>Date created:${responseJson.collection.items[i].data[0].date_created}</p>`);
+    <p>Date created: ${responseJson.collection.items[i].data[0].date_created}</p><hr>`);
   }
-
+  // Removes the hidden class to show the results
   $("#results").removeClass("hidden");
 }
 
+// getPicture and getSearchResults are responsible for fetching API data
 function getPicture() {
   const params = {
     api_key: apiKey,
   };
   const queryString = formatQueryParams(params);
   const url = apodBaseUrl + "?" + queryString;
-
-  console.log(url);
 
   fetch(url)
     .then((response) => {
@@ -53,12 +56,8 @@ function getSearchResults(query, quantity) {
   const params = {
     q: query,
   };
-
   const queryString = formatQueryParams(params);
   const libraryUrl = libraryBaseUrl + "?" + queryString;
-
-  console.log(libraryUrl);
-
   const options = {
     method: "GET",
   };
@@ -76,6 +75,7 @@ function getSearchResults(query, quantity) {
     });
 }
 
+// watchForm is responsible for listening for the submit event
 function watchForm() {
   $("form").submit((event) => {
     event.preventDefault();
@@ -86,7 +86,4 @@ function watchForm() {
 }
 
 $(getPicture);
-
 $(watchForm);
-
-// GET method failed. Try including a method object in the call. Also read the documentation (page 2);

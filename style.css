@@ -1,5 +1,46 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap'); */
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
 * {
   box-sizing: border-box;
+}
+
+body {
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #fff;
+  /* font-family: 'Titillium Web', sans-serif; */
+  font-family: "Roboto", sans-serif;
+  overflow-wrap: break-word;
+}
+
+#button {
+  margin: 20px;
+  padding: 10px;
+  background-color: Transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+}
+
+.field {
+  margin: 20px;
+  padding: 10px;
+  background-color: Transparent;
+  border: 1px solid #fff;
+  color: #fff;
 }
 
 .error-message {
@@ -8,4 +49,64 @@
 
 .hidden {
   display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+form {
+  margin: 5%;
+}
+
+h1,
+.apod h2 {
+  text-align: center;
+}
+
+/* Pseudoclasses for anchor tags */
+a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #d3cce3;
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  width: 100%;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+}
+
+/* Styling for the footer */
+.footer-style {
+  border: 2px solid #fff;
+  margin: 50% 1% 10% 1%;
+  /* border-radius: 5px; */
+  text-align: center;
+}
+
+footer ul {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 1%;
+}
+
+#footer-font {
+  padding-top: 1%;
+  font-size: 12px;
 }
