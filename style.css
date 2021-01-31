@@ -86,6 +86,7 @@ body {
   }
 }
 
+/* Styling for the header */
 header {
   background-image: url("../images/lights.jpg");
   background-repeat: no-repeat;
@@ -104,6 +105,7 @@ header h2 {
   font-size: 20px;
 }
 
+/* Styling for content appearance */
 h1,
 h2,
 h3,
@@ -124,6 +126,7 @@ form {
   font-size: 20px;
 }
 
+/* Styling for form elements */
 .field {
   margin: 10px;
   padding: 10px;
@@ -139,6 +142,7 @@ form {
   color: #fff;
   font-family: "Roboto", sans-serif;
 }
+
 .error-message {
   color: #dc2424;
   font-weight: bold;

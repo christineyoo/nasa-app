@@ -52,7 +52,7 @@ function getPicture() {
     .then((responseJson) => displayPicture(responseJson))
     .catch((err) => {
       $("#js-error-message").text(
-        `Something went wrong. Try searching a new term.`
+        `Something went wrong: ${err.message}`
       );
     });
 }
@@ -76,9 +76,10 @@ function getSearchResults(query, quantity) {
     })
     .then((responseJson) => displaySearchResults(responseJson, quantity))
     .catch((err) => {
-      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+      $("#js-error-message").text("Something went wrong. Try searching a new term.");
     });
 }
+
 
 // watchForm is responsible for listening for the submit event
 function watchForm() {
