@@ -88,9 +88,6 @@ body {
 
 /* Styling for the header */
 header {
-  /* background-image: url("../images/lights.jpg");
-  background-repeat: no-repeat;
-  background-size: cover; */
   padding: 30% 10% 10% 5%;
   margin: -8px;
 }
@@ -255,7 +252,6 @@ footer ul {
   .container h2,
   form,
   nav {
-    /* margin: 0; */
     padding: 0 10%;
   }
 
