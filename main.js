@@ -55,7 +55,7 @@ function getPicture() {
       $("#js-error-message").text(
         `Something went wrong: ${err.message}`
       );
-    });
+  });
 }
 
 function getSearchResults(query, quantity) {
@@ -78,7 +78,7 @@ function getSearchResults(query, quantity) {
     .then((responseJson) => displaySearchResults(responseJson, quantity))
     .catch((err) => {
       $("#js-error-message").text("Something went wrong. Try searching a new term.");
-    });
+  });
 }
 
 
