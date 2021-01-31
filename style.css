@@ -88,9 +88,9 @@ body {
 
 /* Styling for the header */
 header {
-  background-image: url("../images/lights.jpg");
+  /* background-image: url("../images/lights.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover; */
   padding: 30% 10% 10% 5%;
   margin: -8px;
 }
@@ -103,6 +103,10 @@ header h1 {
 
 header h2 {
   font-size: 20px;
+}
+
+#transition {
+  margin: 0 30%;
 }
 
 /* Styling for content appearance */
@@ -239,17 +243,19 @@ footer ul {
   img {
     display: block;
     height: auto;
-    width: 60%;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
   }
 
   #results-list,
   .apod h3,
+  .apod h4,
   .apod p,
   .container h2,
   form,
   nav {
+    /* margin: 0; */
     padding: 0 10%;
   }
 

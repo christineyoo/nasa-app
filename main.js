@@ -11,13 +11,14 @@ function formatQueryParams(params) {
   return queryItems.join("&");
 }
 
-// displayPicture and displaySearchResults are responsible for displaying the content
+// displayPicture is responsible for displaying the picture of the day
 function displayPicture(responseJson) {
   return $(".apod").html(
-    `<h2>Today is ${responseJson.date}</h2><img src="${responseJson.hdurl}" alt="Astronomy picture of the day"><h3>${responseJson.title}</h3><p>${responseJson.explanation}</p>`
+    `<h1 id="top">Astronomy Picture of the Day <br> ${responseJson.date}</h1><img src="${responseJson.hdurl}" alt="Astronomy picture of the day"><h3>${responseJson.title}</h3><p>${responseJson.explanation}</p>`
   );
 }
 
+// displaySearchResults is responsible for displaying the search results
 function displaySearchResults(responseJson, quantity) {
   $("#results-list").empty();
   $("#js-error-message").empty();
