@@ -26,10 +26,10 @@ function displaySearchResults(responseJson, quantity) {
   // for loop displays the number of results based on the user's quantity input
   for (let i = 0; i < quantity; i++) {
     $("#results-list")
-      .append(`<li><h4>${responseJson.collection.items[i].data[0].title}</h4>
+      .append(`<h4>${responseJson.collection.items[i].data[0].title}</h4>
     <img src="${responseJson.collection.items[i].links[0].href}" alt="Image of searched term${i}">
     <p>${responseJson.collection.items[i].data[0].description}</p>
-    <p>Date created: ${responseJson.collection.items[i].data[0].date_created}</p></li><hr>`);
+    <p>Date created: ${responseJson.collection.items[i].data[0].date_created}</p><hr>`);
   }
   // Removes the hidden class to show the results
   $("#results").removeClass("hidden");
@@ -98,4 +98,3 @@ function onDocumentReady() {
 }
 
 $(onDocumentReady);
-

@@ -88,8 +88,7 @@ body {
 
 /* Styling for the header */
 header {
-  padding: 30% 10% 10% 5%;
-  margin: -8px;
+  padding: 15% 10% 10% 5%;
 }
 
 header h1 {
@@ -167,14 +166,6 @@ a:visited {
 a:hover {
   color: #d3cce3;
   text-decoration: none;
-}
-
-ul {
-  padding: 0;
-}
-
-li {
-  list-style: none;
 }
 
 img {
