@@ -37,4 +37,4 @@ https://api.nasa.gov/
 
 ## Special Thanks
 
-- Thinkful
+- [Thinkful](https://www.thinkful.com/)
