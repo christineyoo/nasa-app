@@ -52,10 +52,8 @@ function getPicture() {
     })
     .then((responseJson) => displayPicture(responseJson))
     .catch((err) => {
-      $("#js-error-message").text(
-        `Something went wrong: ${err.message}`
-      );
-  });
+      $("#js-error-message").text(`Something went wrong: ${err.message}`);
+    });
 }
 
 function getSearchResults(query, quantity) {
@@ -77,10 +75,11 @@ function getSearchResults(query, quantity) {
     })
     .then((responseJson) => displaySearchResults(responseJson, quantity))
     .catch((err) => {
-      $("#js-error-message").text("Something went wrong. Try searching a new term.");
-  });
+      $("#js-error-message").text(
+        "Something went wrong. Try searching a new term."
+      );
+    });
 }
-
 
 // watchForm is responsible for listening for the submit event
 function watchForm() {
@@ -92,5 +91,11 @@ function watchForm() {
   });
 }
 
-$(getPicture);
-$(watchForm);
+// This function fires when the document is ready
+function onDocumentReady() {
+  getPicture();
+  watchForm();
+}
+
+$(onDocumentReady);
+
