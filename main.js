@@ -1,5 +1,3 @@
-// API key and base URLs
-const apiKey = "IptJpzC6QdzZTggB5pgKm6BLb4B8b8mjoHktBJgf";
 const apodBaseUrl = "https://api.nasa.gov/planetary/apod";
 const libraryBaseUrl = "https://images-api.nasa.gov/search";
 
@@ -38,7 +36,7 @@ function displaySearchResults(responseJson, quantity) {
 // getPicture and getSearchResults are responsible for fetching API data
 function getPicture() {
   const params = {
-    api_key: apiKey,
+    api_key: API_KEY,
   };
   const queryString = formatQueryParams(params);
   const url = apodBaseUrl + "?" + queryString;
