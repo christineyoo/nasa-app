@@ -1,63 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, width=device-width, initial-scale=1.0"
+    />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://kit.fontawesome.com/147fa46399.js" crossorigin="anonymous"></script>
-    <link rel="shortcut icon" href="#">
-    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script
+      src="https://kit.fontawesome.com/147fa46399.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="shortcut icon" href="#" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <title>L U M I N A</title>
-</head>
-<body>
-  <!-- Header content -->
-  <header id="fade-in">
-    <h1>LUMINA</h1>
-    <h2>Embark on a celestial journey as you discover the cosmos.</h2>
-    <p>Every day a new image or photograph of our awe-inspiring universe is shown. Search a term that interests you to learn more.</p>
-  </header>
-  <!-- Main content -->
+  </head>
+  <body>
+    <!-- Header content -->
+    <header id="fade-in">
+      <h1>LUMINA</h1>
+      <h2>Embark on a celestial journey as you discover the cosmos.</h2>
+      <p>
+        Every day a new image or photograph of our awe-inspiring universe is
+        shown. Search a term that interests you to learn more.
+      </p>
+    </header>
+    <!-- Main content -->
     <main class="container">
-      <hr id="transition">
+      <hr id="transition" />
       <div class="apod"></div>
-      <hr>
+      <hr />
       <h2>Learn more</h2>
       <form id="js-form">
         <label for="js-search-term">Search</label>
-        <input type="text" name="search-term" id="js-search-term" class="field" placeholder="i.e. black hole" required>
-        <br>
+        <input
+          type="text"
+          name="search-term"
+          id="js-search-term"
+          class="field"
+          placeholder="i.e. black hole"
+          required
+        />
+        <br />
         <label for="js-max-results">Maximum results</label>
-        <input type="number" min="1" max="50" value="10" name="max-results" id="js-max-results" class="field" required>
-        <br><br>
-        <input type="submit" id="button" value="Search">
-        <br>
+        <input
+          type="number"
+          min="1"
+          max="50"
+          value="10"
+          name="max-results"
+          id="js-max-results"
+          class="field"
+          required
+        />
+        <br /><br />
+        <input type="submit" id="button" value="Search" />
+        <br />
       </form>
 
       <p id="js-error-message" class="error-message"><strong></strong></p>
 
       <section id="results" class="hidden">
         <h2>Search results</h2>
-        <div id="results-list">
-        </div>
+        <div id="results-list"></div>
       </section>
     </main>
     <!-- Back to the top -->
     <nav>
-      <h3><a href="#top" class="btn"><i class="far fa-arrow-alt-circle-up"></i>&nbsp;Back to the picture of the day</a></h3>
+      <h3>
+        <a href="#top" class="btn"
+          ><i class="far fa-arrow-alt-circle-up"></i>&nbsp;Back to the picture
+          of the day</a
+        >
+      </h3>
     </nav>
     <!-- Footer content -->
     <footer class="footer-style">
       <div class="container">
         <h4 id="footer-font">Copyright &copy; 2021 Christine Yoo</h4>
         <ul id="footer-menu">
-          <li><i class="far fa-envelope"></i><a href="mailto:tstudent205@gmail.com">&nbsp;&nbsp;<strong>Email</strong></a></li>
-          <li><i class="fab fa-linkedin-in"></i><a href="https://www.linkedin.com/in/christine-yoo-cy/" target="_blank">&nbsp;<strong> LinkedIn</strong></a></li>
-          <li><i class="fab fa-github"></i><a href="https://github.com/christineyoo" target="_blank">&nbsp;<strong> GitHub</strong></a></li>
+          <li>
+            <i class="far fa-envelope"></i
+            ><a href="mailto:tstudent205@gmail.com"
+              >&nbsp;&nbsp;<strong>Email</strong></a
+            >
+          </li>
+          <li>
+            <i class="fab fa-linkedin-in"></i
+            ><a
+              href="https://www.linkedin.com/in/christine-yoo-cy/"
+              target="_blank"
+              >&nbsp;<strong> LinkedIn</strong></a
+            >
+          </li>
+          <li>
+            <i class="fab fa-github"></i
+            ><a href="https://github.com/christineyoo" target="_blank"
+              >&nbsp;<strong> GitHub</strong></a
+            >
+          </li>
         </ul>
       </div>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.js"
+      integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="./js/main.js"></script>
-</body>
+  </body>
 </html>
