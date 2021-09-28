@@ -22,6 +22,10 @@
   </head>
   <body>
     <!-- Header content -->
+    <script>
+      fetch(`/.netlify/functions/fetch-cosmos`)
+        .then(res => { console.log(res.json())})
+    </script>
     <header id="fade-in">
       <h1>LUMINA</h1>
       <h2>Embark on a celestial journey as you discover the cosmos.</h2>

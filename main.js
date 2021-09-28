@@ -1,5 +1,8 @@
+// import { handler } from './functions/fetch-cosmos';
 const apodBaseUrl = 'https://api.nasa.gov/planetary/apod';
 const libraryBaseUrl = 'https://images-api.nasa.gov/search';
+
+// console.log('hello i am handler', handler)
 
 // This function formats the query parameters into a string
 function formatQueryParams(params) {
