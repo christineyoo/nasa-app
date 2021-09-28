@@ -1,8 +1,6 @@
-// import { handler } from './functions/fetch-cosmos';
-const apodBaseUrl = 'https://api.nasa.gov/planetary/apod';
-const libraryBaseUrl = 'https://images-api.nasa.gov/search';
+const { response } = require('express');
 
-// console.log('hello i am handler', handler)
+const libraryBaseUrl = 'https://images-api.nasa.gov/search';
 
 // This function formats the query parameters into a string
 function formatQueryParams(params) {
@@ -38,13 +36,7 @@ function displaySearchResults(responseJson, quantity) {
 
 // getPicture and getSearchResults are responsible for fetching API data
 function getPicture() {
-  const params = {
-    api_key: "IptJpzC6QdzZTggB5pgKm6BLb4B8b8mjoHktBJgf"
-  };
-  const queryString = formatQueryParams(params);
-  const url = apodBaseUrl + '?' + queryString;
-
-  fetch(url)
+  fetch(`/.netlify/functions/fetch-cosmos`)
     .then((response) => {
       if (response.ok) {
         return response.json();
