@@ -1,5 +1,3 @@
-const { response } = require('express');
-
 const libraryBaseUrl = 'https://images-api.nasa.gov/search';
 
 // This function formats the query parameters into a string
@@ -13,7 +11,10 @@ function formatQueryParams(params) {
 // displayPicture is responsible for displaying the picture of the day
 function displayPicture(responseJson) {
   return $('.apod').html(
-    `<h1 id="top">Astronomy Picture of the Day <br> ${responseJson.date}</h1><img src="${responseJson.hdurl}" alt="Astronomy picture of the day"><h3>${responseJson.title}</h3><p>${responseJson.explanation}</p>`
+    `<h1 id="top">Astronomy Picture of the Day <br> ${responseJson.date}</h1>
+    <img src="${responseJson.hdurl}" alt="Astronomy picture of the day">
+    <h3>${responseJson.title}</h3>
+    <p>${responseJson.explanation}</p>`
   );
 }
 
@@ -28,7 +29,7 @@ function displaySearchResults(responseJson, quantity) {
       .append(`<h4>${responseJson.collection.items[i].data[0].title}</h4>
     <img src="${responseJson.collection.items[i].links[0].href}" alt="Image of searched term${i}">
     <p>${responseJson.collection.items[i].data[0].description}</p>
-    <p>Date created: ${responseJson.collection.items[i].data[0].date_created}</p><hr>`);
+    <p>Date created: ${(responseJson.collection.items[i].data[0].date_created).substring(0, 10)}</p><hr>`);
   }
   // Removes the hidden class to show the results
   $('#results').removeClass('hidden');
@@ -43,7 +44,10 @@ function getPicture() {
       }
       throw new Error(response.statusText);
     })
-    .then((responseJson) => displayPicture(responseJson))
+    .then((responseJson) => {
+      console.log(responseJson)
+      displayPicture(responseJson)
+    })
     .catch((err) => {
       $('#js-error-message').text(`Something went wrong: ${err.message}`);
     });
