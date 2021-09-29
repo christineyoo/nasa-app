@@ -37,7 +37,7 @@ function displaySearchResults(responseJson, quantity) {
 
 // getPicture and getSearchResults are responsible for fetching API data
 function getPicture() {
-  fetch('/.netlify/functions/fetch-cosmos')
+  fetch('../.netlify/functions/fetch-cosmos')
     .then((response) => {
       if (response.ok) {
         return response.json();
